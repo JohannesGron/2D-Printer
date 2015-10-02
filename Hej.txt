@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 ASDASD
+=======
+sadafrgfbvcx
+>>>>>>> origin/master

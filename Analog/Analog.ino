@@ -26,4 +26,3 @@ void loop() {
   //Venter lige 5 millisekunder så omformeren fra analog til digital lige kan følge med
   delay(5);
 }
-

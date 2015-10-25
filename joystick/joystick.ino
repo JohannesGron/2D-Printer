@@ -15,22 +15,53 @@ void setup() {
   pinMode(inPin, INPUT);    // declare pushbutton as input
 
 }
-
+//void loop kan ikke retunere værdier
 void loop() {
-  // Vi laver en ny funktion, hvor vi henter værdierne A0 og A1
+
+  // Vi laver variabler, hvor vi henter vædierne fra analog-indgangene
   int horizvalue = analogRead(HORIZ);
   int vertvalue = analogRead(VERT);
+
+  //For x-aksen:
+  
+  if(horizvalue < 400){
+    return -1;
+  } 
+  //hvis værdien er i mellem 400 og 600 skal den gøre følgende:
+  else if (horizvalue < 600 ){
+    return 0;
+  }
+  //hvis værdien 600 eller over skal den gøre følgende: 
+  else{
+    return 1;     
+  }
+
+  //for y-aksen:
+
+ if(vertvalue < 400){
+    return -1;
+  } 
+  //hvis værdien er i mellem 400 og 600 skal den gøre følgende:
+  else if (vertvalue < 600 ){
+    return 0;
+  }
+  //hvis værdien 600 eller over skal den gøre følgende: 
+  else{
+    return 1;     
+  }
+
 
   // Får fremvist værdierne på konsollen
   Serial.print(horizvalue);
   Serial.print(" _ ");
   Serial.println(vertvalue);
 
-  if (horizvalue < 400){
-    return 1; 
+  delay(5);
 
   
-  delay(5);
+
+
+
 
   val = digitalRead(inPin);  // read input value
   if (val == HIGH) {         // check if the input is HIGH (button released)

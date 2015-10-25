@@ -3,21 +3,28 @@ void setup() {
 }
 
 void loop() {
-  String result = Joystick();
-  steppermotor(result[0], result[1]);
+  steppermotor(Joystick(true), Joystick(false));
 }
 
 
-String Joystick() {
-  String x = "2";
-  x = x + "3";
-  
-  String y = "1";
-  y = y + 1;
-  return(x, y);  
+//Vipudan
+//Input = ingenting
+//Output = To værdier: 
+//Den ene værdi skal indeholde information om hvorhen steppermotoren skal flytte sig i x-retningen (-1, 0, 1). 
+//Den anden værdi skal indeholde information om hvorhen steppermotoren skal flytte sig i y-retningen (-1, 0, 1)
+
+int Joystick(boolean xory) {
+  if (xory) {
+    //x
+    return 1;
+  } else {
+    //y
+    return 2;
+  }
 }
 
+//Christoffer
 void steppermotor(int x, int y) {
   Serial.println(x);
-  Serial.println(y);
+
 }

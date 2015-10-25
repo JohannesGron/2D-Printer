@@ -41,15 +41,37 @@ void loop() {
 }
 
 void steppermotor(int x, int y){
-  int maks = 1000; // Maks-værdien for x- og y-aksen så vi ved at den ikke kommer ud over maks
+  int maks = 1000; // Maks-værdien for x- og y-aksen så vi ved at den ikke kommer ud over maks.
   // Motor for x-retningen
-  if (stepCountx >= 1 && stepCountx < maks){
+  int xvariable = stepCountx + x;
+  if (xvariable >= 0 && xvariable <= maks){
+    myStepperx.step(x);
+    stepCountx = xvariable;
+  }
+
+  // Motor for y-retningen
+  int yvariable = stepCounty + y;
+  if (yvariable >= 0 && yvariable <= maks){
+    mySteppery.step(y);
+    stepCounty = yvariable;
+  }
+  
+  // Serial for at teste og se x- og y-værdierne 
+  Serial.print("steps x: ");
+  Serial.println(stepCountx);
+  Serial.print("steps y: ");
+  Serial.println(stepCounty);
+  delay(100); //Delay som kan ændres så flødeskummet kan tilpasses med farten
+}
+
+/*
+  if (stepCountx >= 1 && stepCountx < maks){ // stepCountx skal være større eller lig med 1, og stepCountx skal være mindre end maks-værdien.
     myStepperx.step(x);
     stepCountx = stepCountx + x;
-  } else if (stepCountx == 0 && x == 1){
+  } else if (stepCountx == 0 && x == 1){ // stepCountx skal være lig med 0 og x skal være lig med 1.
     myStepperx.step(x);
     stepCountx = stepCountx + x;
-  } else if (stepCountx == maks && x == -1){
+  } else if (stepCountx == maks && x == -1){ // stepCountx skal være lig med maks og x lig med -1.
     myStepperx.step(x);
     stepCountx = stepCountx + x;
   }
@@ -65,11 +87,4 @@ void steppermotor(int x, int y){
     mySteppery.step(y);
     stepCounty = stepCounty + y;
   }
-
-  // Serial for at teste og se x- og y-værdierne 
-  Serial.print("steps x: ");
-  Serial.println(stepCountx);
-  Serial.print("steps y: ");
-  Serial.println(stepCounty);
-  delay(100); //Delay som kan ændres så flødeskummet kan tilpasses med farten
-}
+*/

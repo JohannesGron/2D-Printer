@@ -26,5 +26,5 @@ int Joystick(boolean xory) {
 //Christoffer
 void steppermotor(int x, int y) {
   Serial.println(x);
-
+  Serial.println(y);
 }

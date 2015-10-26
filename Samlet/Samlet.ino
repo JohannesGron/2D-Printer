@@ -1,7 +1,13 @@
-//For joystick:
+/* 
+Anvendte udgange på arduinoen:
+ - A0 = Joystick (x)
+ - A1 = Joystick(y)
+*/
+
 //Navngiver udgang A0 og A1
 const int xanalog = A0;
 const int yanalog = A1;
+
 
 void setup() {
   Serial.begin(9600);
@@ -12,24 +18,26 @@ void loop() {
 }
 
 
-//Vipudan
-//Input = ingenting
-//Output = To værdier: 
-//Den ene værdi skal indeholde information om hvorhen steppermotoren skal flytte sig i x-retningen (-1, 0, 1). 
-//Den anden værdi skal indeholde information om hvorhen steppermotoren skal flytte sig i y-retningen (-1, 0, 1)
+/*
+Denne funktion har Vipudan ansvaret for.
+Formålet med denne funktion er at retunere en værdi der fortæller om Joysticket bliver flyttet på.
+ - Input -> hvilken analog indgang som der skal læses på.
+ - Output -> retunere enten (-1, 0, 1) hvilket angiver hvilken vej som stepper motoren skal køre 
+*/
 
 int Joystick(int analog) {
   int value = analogRead(analog);
-  if (value < 400) {          //hvis værdien er mindre en end 400 skal den gøre følgende:
+  if (value < 400) {          //hvis værdien er mindre en end 400
     return (-1);
   }
-  else if (value < 600 ) {   //hvis værdien er i mellem 400 og 600 skal den gøre følgende:
+  else if (value < 600 ) {   //hvis værdien er i mellem 400 og 600
     return 0;
   }
-  else {                     //hvis værdien 600 eller over skal den gøre følgende: 
+  else {                     //hvis værdien er over 600
     return 1;
   }
 }
+
 
 //Christoffer
 void steppermotor(int x, int y) {

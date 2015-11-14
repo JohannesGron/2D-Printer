@@ -6,13 +6,13 @@ Udgange:
    - A2 -> knap
    - A3 -> Tom
 
-  Stepper 1 (Fastgjort på jernet)
+  Stepper 1 (Fastgjort til plastikken - X)
    - D04 -> Input 1
    - D05 -> Input 2
    - Do6 -> Input 3
    - Do7 -> Input 4
 
-  Stepper 2 (Fastgjort til plastikken)
+  Stepper 2 (Fastgjort på jernet - Y)
    - D08 -> Input 1
    - D09 -> Input 2
    - D10 -> Input 3
@@ -29,15 +29,16 @@ Udgange:
 
 const int xJoystick = A0;    
 const int yJoystick = A1;
-const int buttonJoystick = A2;
+const int bJoystick = A2;
 
-const int switchX = A4;                                             //HUSK AT ÆNDRE
-const int switchY = A5;                                             //HUSK AT ÆNDRE
+const int switchX = A4;                                             
+const int switchY = A5;                                             
              
 
 const int stepsPerRevolution = 400;                                 //Steps på en omgang
 const int maxX = 1000;                                              //Maks steps på x-aksen
 const int maxY = 1000;                                              //Maks steps på y-aksen
+
 int xPosition = 0;
 int yPosition = 0;
 
